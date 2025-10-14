@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Organização Esperança — Início</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Organização Esperança</h1>
+      <nav aria-label="Menu principal">
+        <ul class="main-nav">
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article>
+      <header>
+        <h2>Bem-vindo à Organização Esperança</h2>
+        <p class="lead">Trabalhamos para transformar vidas por meio de ações sociais e voluntariado.</p>
+      </header>
+
+      <section aria-labelledby="sec-missao">
+        <h3 id="sec-missao">Nossa missão</h3>
+        <p>Promover o bem-estar de comunidades carentes, oferecendo apoio social, educacional e cultural.</p>
+       <figure>
+          <img src="img/favela-brasil.png" 
+          alt="Vista de comunidade carente no Brasil" />
+          <figcaption>Voluntários em ação social — comunidade no Brasil.</figcaption>
+          <p class="creditos">Crédito da imagem: Markus Winkler</p>
+       </figure>
+
+
+      </section>
+
+      <section aria-labelledby="sec-contato">
+        <h3 id="sec-contato">Informações de Contato</h3>
+        <ul>
+          <li><strong>E-mail:</strong> contato@organizacaoesperanca.org</li>
+          <li><strong>Telefone:</strong> (11) 99999-9999</li>
+          <li><strong>Endereço:</strong> Rua da Solidariedade, 123 — São Paulo/SP</li>
+        </ul>
+      </section>
+    </article>
+
+    <aside class="sidebar">
+      <h3>Quer participar?</h3>
+      <p>Conheça nossos <a href="projetos.html">projetos sociais</a> e descubra como se voluntariar ou doar.</p>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="ano"></span> Organização Esperança — Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

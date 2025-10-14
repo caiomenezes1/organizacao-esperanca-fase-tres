@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Organização Esperança — Cadastro</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Organização Esperança</h1>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="cadastro.html" aria-current="page">Cadastro</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article>
+      <header>
+        <h2>Cadastro de Voluntário</h2>
+        <p class="lead">Preencha o formulário abaixo para se cadastrar em nossos projetos sociais.</p>
+      </header>
+
+      <!-- Formulário Completo -->
+      <section aria-labelledby="form-titulo">
+        <h3 id="form-titulo">Formulário de Cadastro</h3>
+        <form id="form-cadastro" action="#" method="post" novalidate>
+
+          <!-- Informações Pessoais -->
+          <fieldset>
+            <legend>Informações Pessoais</legend>
+
+            <label for="nome">Nome completo *</label>
+            <input id="nome" name="nome" type="text" required />
+
+            <label for="email">E-mail *</label>
+            <input id="email" name="email" type="email" required />
+
+            <label for="cpf">CPF *</label>
+            <input id="cpf" name="cpf" type="text" required placeholder="000.000.000-00" maxlength="14" />
+
+            <label for="telefone">Telefone *</label>
+            <input id="telefone" name="telefone" type="tel" required placeholder="(00) 00000-0000" maxlength="15" />
+
+            <label for="nascimento">Data de Nascimento *</label>
+            <input id="nascimento" name="nascimento" type="date" required />
+          </fieldset>
+
+          <!-- Endereço -->
+          <fieldset>
+            <legend>Endereço</legend>
+
+            <label for="endereco">Endereço *</label>
+            <input id="endereco" name="endereco" type="text" required />
+
+            <label for="cep">CEP *</label>
+            <input id="cep" name="cep" type="text" required placeholder="00000-000" maxlength="9" />
+
+            <label for="cidade">Cidade *</label>
+            <input id="cidade" name="cidade" type="text" required />
+
+            <label for="estado">Estado *</label>
+            <select id="estado" name="estado" required>
+              <option value="">Selecione...</option>
+              <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+              <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+              <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+              <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+              <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+              <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+              <option>SP</option><option>SE</option><option>TO</option>
+            </select>
+          </fieldset>
+
+          <!-- Área de Interesse -->
+          <fieldset>
+            <legend>Área de Interesse</legend>
+
+            <label for="interesse">Selecione uma opção *</label>
+            <select id="interesse" name="interesse" required>
+              <option value="">Selecione...</option>
+              <option>Educação</option>
+              <option>Alimentação</option>
+              <option>Eventos</option>
+            </select>
+
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+          </fieldset>
+
+          <button type="submit" class="btn">Enviar</button>
+        </form>
+      </section>
+
+      <!-- Imagem de Voluntários -->
+      <section>
+        <h3>Por que se cadastrar?</h3>
+        <p>Ao se cadastrar, você recebe atualizações sobre nossas ações e pode participar das campanhas de voluntariado.</p>
+        <figure class="cadastro-img">
+          <img src="img/voluntarios-brasil.png" alt="Voluntários em ação social no Brasil" />
+          <figcaption>Participe da transformação!</figcaption>
+          <p class="creditos">Crédito da imagem: Andy Quezada</p>
+        </figure>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="ano3"></span> Organização Esperança</p>
+  </footer>
+
+  <script>
+    document.getElementById("ano3").textContent = new Date().getFullYear();
+
+    // Máscara simples para CPF, Telefone e CEP
+    function mascara(i, t) {
+      let v = i.value.replace(/\D/g,'');
+      if(t === 'cpf') i.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+      if(t === 'telefone') i.value = v.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+      if(t === 'cep') i.value = v.replace(/(\d{5})(\d{3})/, "$1-$2");
+    }
+
+    document.getElementById('cpf').addEventListener('input', e => mascara(e.target, 'cpf'));
+    document.getElementById('telefone').addEventListener('input', e => mascara(e.target, 'telefone'));
+    document.getElementById('cep').addEventListener('input', e => mascara(e.target, 'cep'));
+  </script>
+</body>
+</html>

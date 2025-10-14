@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Organização Esperança — Projetos Sociais</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Organização Esperança</h1>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="projetos.html" aria-current="page">Projetos</a></li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article>
+      <header>
+        <h2>Nossos Projetos Sociais</h2>
+        <p class="lead">Conheça as iniciativas que estão mudando vidas e veja como contribuir.</p>
+      </header>
+
+      <section aria-labelledby="sec-voluntariado">
+        <h3 id="sec-voluntariado">Voluntariado</h3>
+        <p>Participe como voluntário! Seja mentor educacional, apoio logístico ou promotor de eventos sociais.</p>
+        <figure class="projeto-img">
+          <img src="img/projeto-brasil.png" alt="Voluntários ensinando crianças" />
+          <figcaption>Projeto de alfabetização comunitária.</figcaption>
+          <p class="creditos">Crédito da imagem: GettyImages gettyimages.com</p>
+        </figure>
+      </section>
+
+      <section aria-labelledby="sec-doacoes">
+        <h3 id="sec-doacoes">Como Doar</h3>
+        <p>Você pode apoiar nossos projetos com doações financeiras, materiais escolares ou alimentos não perecíveis.</p>
+        <ul>
+          <li>Pix: <strong>doe@organizacaoesperanca.org</strong></li>
+          <li>Conta bancária: Agência 1234 / Conta 56789-0</li>
+        </ul>
+       <figure class="projeto-img">
+         <img src="img/doacao-brasil.png" alt="Entrega de alimentos em ação social" />
+         <figcaption>Entrega de alimentos — ação solidária.</figcaption>
+         <p class="creditos">Crédito da imagem: GettyImages gettyimages.com</p>
+       </figure>
+
+      </section>
+    </article>
+
+    <aside class="sidebar">
+      <h3>Quer se juntar?</h3>
+      <p>Faça seu <a href="cadastro.html">cadastro</a> para ser voluntário ou parceiro da nossa causa!</p>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="ano2"></span> Organização Esperança</p>
+  </footer>
+
+  <script>
+    document.getElementById("ano2").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
