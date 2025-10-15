@@ -1,5 +1,0 @@
-Link puúblico do projeto com o código fonte:
-https://github.com/caiomenezes1/organizacao-esperanca-fase-dois
-
-Link gerado pelo GitHub pages com o site:(validado no W3C validator)
-https://caiomenezes1.github.io/organizacao-esperanca-fase-dois
