@@ -89,7 +89,7 @@ aside.sidebar {
 }
 
 /* =========================
-   CABEÇALHO E NAVEGAÇÃO
+   CABEÇALHO E NAVEGAÇÃO (SPA)
 ========================= */
 .site-header {
   background: var(--cor-primaria);
@@ -119,6 +119,7 @@ aside.sidebar {
   color: #fff;
   padding: 0.4rem 0.6rem;
   border-radius: 0.3rem;
+  transition: background 0.3s;
 }
 
 .main-nav a[aria-current="page"] {
@@ -231,7 +232,7 @@ figure.projeto-img img { max-width: 500px; }
 figure.cadastro-img img { max-width: 450px; }
 
 /* =========================
-   FOOTER
+   FOOTER (SPA)
 ========================= */
 .site-footer {
   background-color: var(--cor-neutra-escura);
