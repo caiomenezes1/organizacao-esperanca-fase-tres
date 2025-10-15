@@ -1,8 +1,57 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+
+  // =========================
+  // Inserir cabeçalho e rodapé
+  // =========================
+  const headerHTML = `
+    <header class="site-header">
+      <div class="container">
+        <h1>Organização Esperança</h1>
+        <nav aria-label="Menu principal">
+          <ul class="main-nav">
+            <li><a href="#" data-page="home" aria-current="page">Início</a></li>
+            <li>
+              <a href="#" data-page="projetos">Projetos</a>
+              <ul>
+                <li><a href="#">Projeto 1</a></li>
+                <li><a href="#">Projeto 2</a></li>
+              </ul>
+            </li>
+            <li><a href="#" data-page="cadastro">Cadastro</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger" aria-label="Menu mobile">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+  `;
+
+  const footerHTML = `
+    <footer class="site-footer">
+      <p>&copy; <span id="ano"></span> Organização Esperança</p>
+    </footer>
+  `;
+
+  body.insertAdjacentHTML("afterbegin", headerHTML);
+  body.insertAdjacentHTML("beforeend", footerHTML);
+  document.getElementById("ano").textContent = new Date().getFullYear();
+
+  // =========================
+  // SPA - Carregamento de páginas
+  // =========================
   const mainContainer = document.querySelector("main.container");
   const links = document.querySelectorAll(".main-nav a");
   const hamburger = document.querySelector('.hamburger');
   const nav = document.querySelector('.main-nav');
+
+  // Menu hamburger
+  hamburger.addEventListener('click', () => {
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+  });
 
   // Função para carregar página via fetch
   async function carregarPagina(pagina) {
@@ -47,11 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const pagina = window.location.pathname.split("/").pop().replace(".html", "");
     if (pagina) carregarPagina(pagina);
     else carregarPagina("home");
-  });
-
-  // Menu hamburger
-  hamburger.addEventListener('click', () => {
-    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
   });
 
   // Inicializa página de cadastro (toasts, validação)
