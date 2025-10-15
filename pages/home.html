@@ -46,7 +46,6 @@
     }
 
     h1, h2, h3 { margin: 0 0 var(--space-sm) 0; }
-    h1 { font-size: var(--fs-xxl); }
     h2 { font-size: var(--fs-xl); }
     h3 { font-size: var(--fs-lg); }
 
@@ -62,13 +61,6 @@
       display: grid;
       grid-template-columns: repeat(var(--grid-columns), 1fr);
       gap: var(--space-lg);
-    }
-
-    header.site-header {
-      background-color: var(--cor-primaria);
-      color: white;
-      padding: var(--space-md) 0;
-      text-align: center;
     }
 
     main {
@@ -92,14 +84,6 @@
       padding: var(--space-md);
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    footer.site-footer {
-      background-color: var(--cor-neutra-escura);
-      color: white;
-      text-align: center;
-      padding: var(--space-md) 0;
-      margin-top: var(--space-xl);
     }
 
     button {
@@ -150,9 +134,6 @@
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <h1>Organização Esperança</h1>
-  </header>
 
   <main class="container">
     <article>
@@ -201,12 +182,7 @@
     </aside>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; <span id="ano2"></span> Organização Esperança</p>
-  </footer>
+  <footer class="site-footer"></footer>
 
-  <script>
-    document.getElementById("ano2").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
