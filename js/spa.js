@@ -5,9 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector('.main-nav');
 
   // Função para carregar página via fetch
-  async function carregarPagina(url) {
+  async function carregarPagina(pagina) {
     try {
+      const url = `pages/${pagina}.html`;
       const resposta = await fetch(url);
+      if (!resposta.ok) throw new Error("Erro ao carregar a página.");
       const html = await resposta.text();
 
       // Extrair apenas o conteúdo do <main class="container">
@@ -18,12 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
         mainContainer.innerHTML = novoConteudo.innerHTML;
       }
 
-      // Reaplicar scripts de página se necessário
-      if (url.endsWith("cadastro.html")) {
+      // Chamar scripts específicos
+      if (pagina === "cadastro") {
         inicializarFormCadastro();
       }
     } catch (err) {
-      mainContainer.innerHTML = "<p>Erro ao carregar a página.</p>";
+      mainContainer.innerHTML = "<p style='color:red;'>Erro ao carregar a página.</p>";
       console.error(err);
     }
   }
@@ -32,16 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
   links.forEach(link => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      const url = link.getAttribute("href");
+      const pagina = link.dataset.page;
+      if (!pagina) return;
 
-      carregarPagina(url);
-      window.history.pushState({}, "", url);
+      carregarPagina(pagina);
+      window.history.pushState({}, "", pagina + ".html");
     });
   });
 
   // Suporte para navegação pelo botão voltar/avançar do navegador
   window.addEventListener("popstate", () => {
-    carregarPagina(window.location.pathname.split("/").pop());
+    const pagina = window.location.pathname.split("/").pop().replace(".html", "");
+    if (pagina) carregarPagina(pagina);
+    else carregarPagina("home");
   });
 
   // Menu hamburger
@@ -57,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showToast(message, type = "success") {
       const toast = document.createElement("div");
-      toast.className = `toast ${type}`;
+      toast.className = `toast ${type} show`;
       toast.textContent = message;
       toastContainer.appendChild(toast);
       setTimeout(() => toast.remove(), 5000);
@@ -107,11 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Carrega a página inicial ao abrir
-  const paginaInicial = window.location.pathname.endsWith("index.html") || window.location.pathname === "/";
-  if (paginaInicial) {
-    carregarPagina("index.html");
-  } else {
-    carregarPagina(window.location.pathname.split("/").pop());
-  }
+  // Carrega a página inicial automaticamente
+  carregarPagina("home");
 });
