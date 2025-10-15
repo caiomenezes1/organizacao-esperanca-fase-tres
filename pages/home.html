@@ -55,9 +55,6 @@
     a { color: var(--cor-secundaria); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* =========================
-       Layout Principal (Grid)
-    ========================= */
     .container {
       width: 90%;
       max-width: 1200px;
@@ -71,12 +68,7 @@
       background-color: var(--cor-primaria);
       color: white;
       padding: var(--space-md) 0;
-    }
-
-    .site-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      text-align: center;
     }
 
     main {
@@ -110,34 +102,6 @@
       margin-top: var(--space-xl);
     }
 
-    /* =========================
-       Navegação
-    ========================= */
-    .main-nav { display: flex; list-style: none; gap: var(--space-md); margin: 0; padding: 0; }
-    .main-nav li { position: relative; }
-    .main-nav li ul {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--cor-neutra-clara);
-      list-style: none;
-      padding: var(--space-sm);
-      border-radius: 4px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .main-nav li:hover ul { display: block; }
-
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { display: block; width: 25px; height: 3px; background: white; }
-
-    @media (max-width: 992px) { main { grid-template-columns: repeat(6, 1fr); } }
-    @media (max-width: 768px) { main { grid-template-columns: 1fr; } .sidebar { margin-top: var(--space-lg); } }
-    @media (max-width: 576px) { .main-nav { display: none; } .hamburger { display: flex; } }
-
-    /* =========================
-       Componentes
-    ========================= */
     button {
       background-color: var(--cor-secundaria);
       color: white;
@@ -187,27 +151,7 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <h1>Organização Esperança</h1>
-      <nav aria-label="Menu principal">
-        <ul class="main-nav">
-          <li><a href="index.html" aria-current="page">Início</a></li>
-          <li>
-            <a href="projetos.html">Projetos</a>
-            <ul>
-              <li><a href="#">Projeto 1</a></li>
-              <li><a href="#">Projeto 2</a></li>
-            </ul>
-          </li>
-          <li><a href="cadastro.html">Cadastro</a></li>
-        </ul>
-      </nav>
-      <div class="hamburger" aria-label="Menu mobile">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
+    <h1>Organização Esperança</h1>
   </header>
 
   <main class="container">
@@ -248,7 +192,7 @@
 
     <aside class="sidebar">
       <h3>Quer se juntar?</h3>
-      <p>Faça seu <a href="cadastro.html">cadastro</a> para ser voluntário ou parceiro da nossa causa!</p>
+      <p>Faça seu <a href="#" data-page="cadastro">cadastro</a> para ser voluntário ou parceiro da nossa causa!</p>
       <div class="card">
         <h4>Próximo Evento</h4>
         <p>Dia 20/10, Oficina de Educação Social.</p>
@@ -263,13 +207,6 @@
 
   <script>
     document.getElementById("ano2").textContent = new Date().getFullYear();
-
-    // Menu hamburger
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.main-nav');
-    hamburger.addEventListener('click', () => {
-      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    });
   </script>
 </body>
 </html>
