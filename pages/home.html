@@ -1,92 +1,44 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Organização Esperança — Início</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Organização Esperança</h1>
-      <nav aria-label="Menu principal">
-        <ul class="main-nav">
-          <li><a href="#" data-page="home">Início</a></li>
-          <li>
-            <a href="#" data-page="projetos">Projetos</a>
-          </li>
-          <li><a href="#" data-page="cadastro">Cadastro</a></li>
-        </ul>
-      </nav>
-      <div class="hamburger" aria-label="Menu mobile">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
+<article>
+  <header>
+    <h2>Bem-vindo à Organização Esperança</h2>
+    <p class="lead">Conheça nossas iniciativas e veja como você pode ajudar a transformar vidas.</p>
   </header>
 
-  <main class="container">
-    <article>
-      <header>
-        <h2>Bem-vindo à Organização Esperança</h2>
-        <p class="lead">Conheça nossas iniciativas, participe e ajude a transformar vidas!</p>
-      </header>
+  <section aria-labelledby="sec-voluntariado">
+    <h3 id="sec-voluntariado">Voluntariado</h3>
+    <p>Participe como voluntário! Seja mentor educacional, apoio logístico ou promotor de eventos sociais.</p>
+    <figure class="index-img">
+      <img src="img/projeto-brasil.png" alt="Voluntários ensinando crianças" />
+      <figcaption>
+        Projeto de alfabetização comunitária.<br />
+        <span class="creditos">Crédito da imagem: GettyImages gettyimages.com</span>
+      </figcaption>
+    </figure>
+  </section>
 
-      <section aria-labelledby="sec-sobre">
-        <h3 id="sec-sobre">Sobre Nós</h3>
-        <p>A Organização Esperança realiza projetos sociais voltados para educação, saúde e inclusão social. Trabalhamos para impactar positivamente a vida de crianças, jovens e famílias.</p>
-        <figure class="index-img">
-          <img src="img/favela-brasil.png" alt="Ações comunitárias e voluntariado" />
-          <figcaption>
-            Nossas ações transformando comunidades.<br />
-            <span class="creditos">Crédito da imagem: GettyImages gettyimages.com</span>
-          </figcaption>
-        </figure>
-      </section>
+  <section aria-labelledby="sec-doacoes">
+    <h3 id="sec-doacoes">Como Doar</h3>
+    <p>Você pode apoiar nossos projetos com doações financeiras, materiais escolares ou alimentos não perecíveis.</p>
+    <ul>
+      <li>Pix: <strong>doe@organizacaoesperanca.org</strong></li>
+      <li>Conta bancária: Agência 1234 / Conta 56789-0</li>
+    </ul>
+    <figure class="index-img">
+      <img src="img/doacao-brasil.png" alt="Entrega de alimentos em ação social" />
+      <figcaption>
+        Entrega de alimentos — ação solidária.<br />
+        <span class="creditos">Crédito da imagem: GettyImages gettyimages.com</span>
+      </figcaption>
+    </figure>
+  </section>
+</article>
 
-      <section aria-labelledby="sec-como-ajudar">
-        <h3 id="sec-como-ajudar">Como Ajudar</h3>
-        <p>Você pode contribuir como voluntário ou através de doações:</p>
-        <ul>
-          <li>Seja voluntário: <a href="#" data-page="cadastro">Faça seu cadastro</a></li>
-          <li>Doações financeiras ou materiais escolares</li>
-        </ul>
-        <figure class="index-img">
-          <img src="img/doacao-brasil.png" alt="Entrega de doações" />
-          <figcaption>
-            Doe e faça a diferença.<br />
-            <span class="creditos">Crédito da imagem: GettyImages gettyimages.com</span>
-          </figcaption>
-        </figure>
-      </section>
-    </article>
-
-    <aside class="sidebar">
-      <h3>Participe!</h3>
-      <p>Cadastre-se para ser voluntário ou apoiar nossos projetos:</p>
-      <div class="card">
-        <h4>Próximo Evento</h4>
-        <p>Dia 20/10 — Oficina de Educação Social</p>
-        <span class="badge">Evento</span>
-      </div>
-    </aside>
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; <span id="ano-home"></span> Organização Esperança</p>
-  </footer>
-
-  <script>
-    document.getElementById("ano-home").textContent = new Date().getFullYear();
-
-    // Menu hamburger
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.main-nav');
-    hamburger.addEventListener('click', () => {
-      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    });
-  </script>
-</body>
-</html>
+<aside class="sidebar">
+  <h3>Quer se juntar?</h3>
+  <p>Faça seu <a href="cadastro.html">cadastro</a> para ser voluntário ou parceiro da nossa causa!</p>
+  <div class="card">
+    <h4>Próximo Evento</h4>
+    <p>Dia 20/10, Oficina de Educação Social.</p>
+    <span class="badge">Evento</span>
+  </div>
+</aside>
