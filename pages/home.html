@@ -7,6 +7,30 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Organização Esperança</h1>
+      <nav aria-label="Menu principal">
+        <ul class="main-nav">
+          <li><a href="#" data-page="home" aria-current="page">Início</a></li>
+          <li>
+            <a href="#" data-page="projetos">Projetos</a>
+            <ul>
+              <li><a href="#">Projeto 1</a></li>
+              <li><a href="#">Projeto 2</a></li>
+            </ul>
+          </li>
+          <li><a href="#" data-page="cadastro">Cadastro</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger" aria-label="Menu mobile">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
   <main class="container">
     <article>
       <header>
@@ -17,7 +41,7 @@
       <section aria-labelledby="sec-voluntariado">
         <h3 id="sec-voluntariado">Voluntariado</h3>
         <p>Participe como voluntário! Seja mentor educacional, apoio logístico ou promotor de eventos sociais.</p>
-        <figure class="index-img">
+        <figure class="projeto-img">
           <img src="img/projeto-brasil.png" alt="Voluntários ensinando crianças" />
           <figcaption>
             Projeto de alfabetização comunitária.<br />
@@ -33,7 +57,7 @@
           <li>Pix: <strong>doe@organizacaoesperanca.org</strong></li>
           <li>Conta bancária: Agência 1234 / Conta 56789-0</li>
         </ul>
-        <figure class="index-img">
+        <figure class="projeto-img">
           <img src="img/doacao-brasil.png" alt="Entrega de alimentos em ação social" />
           <figcaption>
             Entrega de alimentos — ação solidária.<br />
@@ -53,5 +77,20 @@
       </div>
     </aside>
   </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="ano"></span> Organização Esperança</p>
+  </footer>
+
+  <script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+
+    // Menu hamburger
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.main-nav');
+    hamburger.addEventListener('click', () => {
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
 </body>
 </html>
