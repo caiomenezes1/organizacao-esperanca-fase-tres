@@ -4,147 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Organização Esperança — Cadastro</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     /* =========================
-       Design System
+       Layout específico da página
     ========================= */
-    :root {
-      --cor-primaria: #2c3e50;
-      --cor-secundaria: #18bc9c;
-      --cor-accent: #3498db;
-      --cor-erro: #e74c3c;
-      --cor-sucesso: #27ae60;
-      --cor-neutra-clara: #ecf0f1;
-      --cor-neutra-escura: #34495e;
-
-      --font-base: 'Helvetica', sans-serif;
-      --fs-xxl: 3rem;
-      --fs-xl: 2rem;
-      --fs-lg: 1.5rem;
-      --fs-md: 1.125rem;
-      --fs-sm: 0.875rem;
-
-      --space-xs: 8px;
-      --space-sm: 16px;
-      --space-md: 24px;
-      --space-lg: 32px;
-      --space-xl: 48px;
-      --space-xxl: 64px;
-
-      --grid-columns: 12;
-    }
-
-    body {
-      font-family: var(--font-base);
-      margin: 0;
-      padding: 0;
-      background-color: var(--cor-neutra-clara);
-      color: var(--cor-neutra-escura);
-      line-height: 1.6;
-    }
-
-    h1, h2, h3 { margin: 0 0 var(--space-sm) 0; }
-    h1 { font-size: var(--fs-xxl); }
-    h2 { font-size: var(--fs-xl); }
-    h3 { font-size: var(--fs-lg); }
-
-    p.lead {
-      font-size: var(--fs-md);
-      font-weight: bold;
-    }
-
-    a { color: var(--cor-secundaria); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* Layout Principal */
-    .container {
+    main.container {
+      display: block;
       width: 90%;
       max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(var(--grid-columns), 1fr);
-      gap: var(--space-lg);
+      margin: var(--space-lg) auto;
     }
 
-    header.site-header {
-      background-color: var(--cor-primaria);
-      color: white;
-      padding: var(--space-md) 0;
-    }
-
-    .site-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: var(--space-lg);
-      margin-top: var(--space-lg);
-    }
-
-    main article {
-      grid-column: span 8;
+    article {
+      width: 100%;
       background: white;
       padding: var(--space-md);
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    footer.site-footer {
-      background-color: var(--cor-neutra-escura);
-      color: white;
-      text-align: center;
-      padding: var(--space-md) 0;
-      margin-top: var(--space-xl);
-    }
-
-    /* Navegação */
-    .main-nav {
-      display: flex;
-      list-style: none;
-      gap: var(--space-md);
-      margin: 0;
-      padding: 0;
-    }
-
-    .main-nav li { position: relative; }
-    .main-nav li ul {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--cor-neutra-clara);
-      list-style: none;
+    form input, form textarea, form select {
+      width: 100%;
       padding: var(--space-sm);
+      margin-bottom: var(--space-md);
+      border: 1px solid #ccc;
       border-radius: 4px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .main-nav li:hover ul { display: block; }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background: white;
+      font-size: var(--fs-md);
     }
 
-    @media (max-width: 768px) {
-      main { grid-template-columns: 1fr; }
-      .main-nav { display: none; }
-      .hamburger { display: flex; }
-    }
-
-    /* Botão */
     form button {
       margin-top: 1rem;
       background: var(--cor-accent);
@@ -166,20 +54,6 @@
     form button:focus {
       outline: 2px solid #0a74da;
       outline-offset: 2px;
-    }
-
-    /* Inputs */
-    input, textarea, select {
-      width: 100%;
-      padding: var(--space-sm);
-      margin-bottom: var(--space-md);
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: var(--fs-md);
-    }
-    input:focus, textarea:focus, select:focus {
-      border-color: var(--cor-secundaria);
-      outline: none;
     }
 
     /* Toast */
@@ -212,22 +86,6 @@
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Organização Esperança</h1>
-      <nav aria-label="Menu principal">
-        <ul class="main-nav">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="cadastro.html" aria-current="page">Cadastro</a></li>
-        </ul>
-      </nav>
-      <div class="hamburger" aria-label="Menu mobile">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </header>
-
   <main class="container">
     <article>
       <header>
@@ -281,18 +139,11 @@
 
         <button type="submit">Enviar</button>
       </form>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; <span id="ano3"></span> Organização Esperança</p>
-  </footer>
+  </article>
 
   <div class="toast-container" id="toast-container"></div>
 
   <script>
-    document.getElementById("ano3").textContent = new Date().getFullYear();
-
     const form = document.getElementById("form-cadastro");
     const toastContainer = document.getElementById("toast-container");
 
@@ -301,7 +152,7 @@
       toast.className = `toast ${type}`;
       toast.textContent = message;
       toastContainer.appendChild(toast);
-      setTimeout(() => toast.remove(), 5000); // fica 5s na tela
+      setTimeout(() => toast.remove(), 5000);
     }
 
     function mascara(i, t) {
@@ -345,13 +196,6 @@
         showToast("Cadastro realizado com sucesso!", "success");
         form.reset();
       }
-    });
-
-    // Menu hamburger
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.main-nav');
-    hamburger.addEventListener('click', () => {
-      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
     });
   </script>
 </body>
