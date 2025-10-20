@@ -32,8 +32,6 @@
       --space-lg: 32px;
       --space-xl: 48px;
       --space-xxl: 64px;
-
-      --grid-columns: 12;
     }
 
     body {
@@ -58,28 +56,13 @@
       width: 90%;
       max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(var(--grid-columns), 1fr);
-      gap: var(--space-lg);
     }
 
     main {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: var(--space-lg);
       margin-top: var(--space-lg);
     }
 
-    main article {
-      grid-column: span 5;
-      background: white;
-      padding: var(--space-md);
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    aside.sidebar {
-      grid-column: span 3;
+    article {
       background: white;
       padding: var(--space-md);
       border-radius: 8px;
@@ -170,16 +153,6 @@
         </figure>
       </section>
     </article>
-
-    <aside class="sidebar">
-      <h3>Quer se juntar?</h3>
-      <p>Faça seu <a href="#" data-page="cadastro">cadastro</a> para ser voluntário ou parceiro da nossa causa!</p>
-      <div class="card">
-        <h4>Próximo Evento</h4>
-        <p>Dia 20/10, Oficina de Educação Social.</p>
-        <span class="badge">Evento</span>
-      </div>
-    </aside>
   </main>
 
   <footer class="site-footer"></footer>
