@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Organização Esperança — Início</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     /* =========================
        Design System
@@ -12,7 +12,7 @@
     :root {
       --cor-primaria: #2c3e50;
       --cor-secundaria: #18bc9c;
-      --cor-accent: #3498db;
+      --cor-accent: #e74c3c;
       --cor-neutra-clara: #ecf0f1;
       --cor-neutra-escura: #34495e;
       --cor-info: #3498db;
@@ -32,8 +32,6 @@
       --space-lg: 32px;
       --space-xl: 48px;
       --space-xxl: 64px;
-
-      --grid-columns: 12;
     }
 
     body {
@@ -46,14 +44,10 @@
     }
 
     h1, h2, h3 { margin: 0 0 var(--space-sm) 0; }
-    h1 { font-size: var(--fs-xxl); }
     h2 { font-size: var(--fs-xl); }
     h3 { font-size: var(--fs-lg); }
 
-    p.lead {
-      font-size: var(--fs-md);
-      font-weight: bold;
-    }
+    p.lead { font-size: var(--fs-md); font-weight: bold; }
 
     a { color: var(--cor-secundaria); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -62,126 +56,106 @@
       width: 90%;
       max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(var(--grid-columns), 1fr);
-      gap: var(--space-lg);
-    }
-
-    header.site-header {
-      background-color: var(--cor-primaria);
-      color: white;
-      padding: var(--space-md) 0;
-      font-family: var(--font-base);
-      font-size: var(--fs-md);
-    }
-
-    .site-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
     main {
-      margin-top: var(--space-lg); /* Descola o corpo do cabeçalho */
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: var(--space-lg);
+      margin-top: var(--space-lg);
     }
 
-    main article {
-      grid-column: span 8;
+    article {
       background: white;
       padding: var(--space-md);
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    footer.site-footer {
-      background-color: var(--cor-neutra-escura);
+    button {
+      background-color: var(--cor-secundaria);
       color: white;
-      text-align: center;
-      padding: var(--space-md) 0;
-      margin-top: var(--space-xl);
-    }
-
-    .main-nav {
-      display: flex;
-      list-style: none;
-      gap: var(--space-md);
-      margin: 0;
-      padding: 0;
-    }
-
-    .main-nav li { position: relative; }
-    .main-nav li ul {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--cor-neutra-clara);
-      list-style: none;
-      padding: var(--space-sm);
+      border: none;
+      padding: var(--space-sm) var(--space-md);
       border-radius: 4px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .main-nav li:hover ul { display: block; }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
       cursor: pointer;
+      font-size: var(--fs-md);
+      transition: background 0.3s;
     }
-    .hamburger span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background: white;
+    button:hover { background-color: var(--cor-accent); }
+    button:disabled { background-color: #ccc; cursor: not-allowed; }
+
+    .badge {
+      display: inline-block;
+      background: var(--cor-info);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: var(--fs-sm);
+      margin-right: 4px;
     }
 
-    @media (max-width: 768px) {
-      main { grid-template-columns: 1fr; }
-      .main-nav { display: none; }
-      .hamburger { display: flex; }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
     }
+
+    input, textarea {
+      width: 100%;
+      padding: var(--space-sm);
+      margin-bottom: var(--space-md);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: var(--fs-md);
+    }
+
+    input:focus, textarea:focus { border-color: var(--cor-secundaria); outline: none; }
+
+    img { max-width: 100%; height: auto; border-radius: 4px; }
+    figure { margin: var(--space-md) 0; }
+    figcaption { font-size: var(--fs-sm); color: #666; }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Organização Esperança</h1>
-      <nav aria-label="Menu principal">
-        <ul class="main-nav">
-          <li><a href="index.html" aria-current="page">Início</a></li>
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="cadastro.html">Cadastro</a></li>
-        </ul>
-      </nav>
-      <div class="hamburger" aria-label="Menu mobile">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </header>
 
   <main class="container">
     <article>
-      <h2>Bem-vindo à Organização Esperança</h2>
-      <p class="lead">Nossa missão é apoiar projetos sociais que transformam vidas. Explore nossos projetos e participe como voluntário ou doador.</p>
+      <header>
+        <h2>Bem-vindo à Organização Esperança</h2>
+        <p class="lead">Conheça nossas iniciativas sociais e veja como você pode ajudar a transformar vidas.</p>
+      </header>
+
+      <section aria-labelledby="sec-voluntariado">
+        <h3 id="sec-voluntariado">Voluntariado</h3>
+        <p>Participe como voluntário! Seja mentor educacional, apoio logístico ou promotor de eventos sociais.</p>
+        <figure class="projeto-img">
+          <img src="img/projeto-brasil.png" alt="Voluntários ensinando crianças" />
+          <figcaption>
+            Projeto de alfabetização comunitária.<br />
+            <span class="creditos">Crédito da imagem: GettyImages gettyimages.com</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="sec-doacoes">
+        <h3 id="sec-doacoes">Como Doar</h3>
+        <p>Você pode apoiar nossos projetos com doações financeiras, materiais escolares ou alimentos não perecíveis.</p>
+        <ul>
+          <li>Pix: <strong>doe@organizacaoesperanca.org</strong></li>
+          <li>Conta bancária: Agência 1234 / Conta 56789-0</li>
+        </ul>
+        <figure class="projeto-img">
+          <img src="img/doacao-brasil.png" alt="Entrega de alimentos em ação social" />
+          <figcaption>
+            Entrega de alimentos — ação solidária.<br />
+            <span class="creditos">Crédito da imagem: GettyImages gettyimages.com</span>
+          </figcaption>
+        </figure>
+      </section>
     </article>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; <span id="ano1"></span> Organização Esperança</p>
-  </footer>
+  <footer class="site-footer"></footer>
 
-  <script>
-    document.getElementById("ano1").textContent = new Date().getFullYear();
-
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.main-nav');
-    hamburger.addEventListener('click', () => {
-      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    });
-  </script>
 </body>
 </html>
