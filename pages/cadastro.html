@@ -6,9 +6,6 @@
   <title>Organização Esperança — Cadastro</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* =========================
-       Layout específico da página
-    ========================= */
     main.container {
       display: block;
       width: 90%;
@@ -61,7 +58,9 @@
       outline-offset: 2px;
     }
 
-    /* Toast */
+    /* ===================
+       Toasts
+    =================== */
     .toast-container {
       position: fixed;
       top: 20px;
@@ -69,6 +68,7 @@
       z-index: 9999;
       display: flex;
       flex-direction: column;
+      align-items: flex-end;
       gap: 10px;
     }
 
@@ -76,15 +76,15 @@
       padding: 1rem 1.5rem;
       border-radius: 6px;
       color: white;
+      background-color: red; /* cor do erro */
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       opacity: 0;
       transform: translateY(-20px);
       animation: fadeInOut 5s forwards;
       font-size: var(--fs-sm);
+      min-width: 250px;
+      max-width: 350px;
     }
-
-    .toast.success { background: var(--cor-sucesso); }
-    .toast.error { background: var(--cor-erro); }
 
     @keyframes fadeInOut {
       0% { opacity: 0; transform: translateY(-20px); }
@@ -158,16 +158,14 @@
     const form = document.getElementById("form-cadastro");
     const toastContainer = document.getElementById("toast-container");
 
-    function showToast(message, type = "success") {
+    function showToast(message) {
       const toast = document.createElement("div");
-      toast.className = `toast ${type}`;
+      toast.className = "toast";
       toast.textContent = message;
       toastContainer.appendChild(toast);
 
-      // Remover toast após animação completa
-      setTimeout(() => {
-        toast.remove();
-      }, 5000);
+      // Remover após animação
+      setTimeout(() => toast.remove(), 5000);
     }
 
     function mascara(i, t) {
@@ -189,24 +187,24 @@
       campos.forEach(campo => {
         if (!campo.value.trim()) {
           valido = false;
-          showToast(`O campo "${campo.previousElementSibling.textContent.replace('*','').trim()}" está em branco.`, "error");
+          showToast(`O campo "${campo.previousElementSibling.textContent.replace('*','').trim()}" está em branco.`);
         }
       });
 
       const cpf = document.getElementById("cpf").value;
       if (cpf && !/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf)) {
         valido = false;
-        showToast("CPF inválido. Use o formato 000.000.000-00.", "error");
+        showToast("CPF inválido. Use o formato 000.000.000-00.");
       }
 
       const cep = document.getElementById("cep").value;
       if (cep && !/^\d{5}-\d{3}$/.test(cep)) {
         valido = false;
-        showToast("CEP inválido. Use o formato 00000-000.", "error");
+        showToast("CEP inválido. Use o formato 00000-000.");
       }
 
       if (valido) {
-        showToast("Cadastro realizado com sucesso!", "success");
+        showToast("Cadastro realizado com sucesso!");
         form.reset();
       }
     });
