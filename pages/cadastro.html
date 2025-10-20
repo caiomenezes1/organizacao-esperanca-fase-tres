@@ -6,6 +6,9 @@
   <title>Organização Esperança — Cadastro</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* =========================
+       Layout específico da página
+    ========================= */
     main.container {
       display: block;
       width: 90%;
@@ -58,9 +61,7 @@
       outline-offset: 2px;
     }
 
-    /* ===================
-       Toasts
-    =================== */
+    /* Toast */
     .toast-container {
       position: fixed;
       top: 20px;
@@ -68,29 +69,34 @@
       z-index: 9999;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
       gap: 10px;
+      align-items: flex-end;
     }
 
     .toast {
+      min-width: 250px;
       padding: 1rem 1.5rem;
       border-radius: 6px;
-      color: white;
-      background-color: red; /* cor do erro */
+      color: #fff;
+      font-weight: bold;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      opacity: 0;
-      transform: translateY(-20px);
-      animation: fadeInOut 5s forwards;
+      opacity: 0.95;
       font-size: var(--fs-sm);
-      min-width: 250px;
-      max-width: 350px;
+      animation: slideIn 0.3s ease forwards, fadeOut 0.5s ease 4.5s forwards;
+      position: relative;
     }
 
-    @keyframes fadeInOut {
-      0% { opacity: 0; transform: translateY(-20px); }
-      10% { opacity: 1; transform: translateY(0); }
-      90% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-20px); }
+    .toast.success { background-color: #27ae60; }
+    .toast.error { background-color: #e74c3c; }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 0.95; }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 0.95; }
+      to { opacity: 0; height: 0; margin: 0; padding: 0; }
     }
   </style>
 </head>
@@ -158,14 +164,21 @@
     const form = document.getElementById("form-cadastro");
     const toastContainer = document.getElementById("toast-container");
 
-    function showToast(message) {
+    function showToast(message, type = "success") {
       const toast = document.createElement("div");
-      toast.className = "toast";
+      toast.className = `toast ${type}`;
       toast.textContent = message;
       toastContainer.appendChild(toast);
 
-      // Remover após animação
-      setTimeout(() => toast.remove(), 5000);
+      // Remove após 5s com animação de fade
+      setTimeout(() => {
+        toast.style.height = toast.offsetHeight + "px"; // mantém altura antes de remover
+        toast.style.transition = "all 0.5s ease";
+        toast.style.opacity = 0;
+        toast.style.margin = 0;
+        toast.style.padding = 0;
+        setTimeout(() => toast.remove(), 500);
+      }, 5000);
     }
 
     function mascara(i, t) {
@@ -187,24 +200,24 @@
       campos.forEach(campo => {
         if (!campo.value.trim()) {
           valido = false;
-          showToast(`O campo "${campo.previousElementSibling.textContent.replace('*','').trim()}" está em branco.`);
+          showToast(`O campo "${campo.previousElementSibling.textContent.replace('*','').trim()}" está em branco.`, "error");
         }
       });
 
       const cpf = document.getElementById("cpf").value;
       if (cpf && !/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf)) {
         valido = false;
-        showToast("CPF inválido. Use o formato 000.000.000-00.");
+        showToast("CPF inválido. Use o formato 000.000.000-00.", "error");
       }
 
       const cep = document.getElementById("cep").value;
       if (cep && !/^\d{5}-\d{3}$/.test(cep)) {
         valido = false;
-        showToast("CEP inválido. Use o formato 00000-000.");
+        showToast("CEP inválido. Use o formato 00000-000.", "error");
       }
 
       if (valido) {
-        showToast("Cadastro realizado com sucesso!");
+        showToast("Cadastro realizado com sucesso!", "success");
         form.reset();
       }
     });
