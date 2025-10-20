@@ -24,6 +24,11 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
+    header h2, header p.lead {
+      font-family: 'Helvetica', sans-serif;
+      margin-bottom: var(--space-sm);
+    }
+
     form input, form textarea, form select {
       width: 100%;
       padding: var(--space-sm);
@@ -139,7 +144,8 @@
 
         <button type="submit">Enviar</button>
       </form>
-  </article>
+    </article>
+  </main>
 
   <div class="toast-container" id="toast-container"></div>
 
@@ -178,14 +184,12 @@
         }
       });
 
-      // valida CPF
       const cpf = document.getElementById("cpf").value;
       if (cpf && !/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf)) {
         valido = false;
         showToast("CPF inválido. Use o formato 000.000.000-00.", "error");
       }
 
-      // valida CEP
       const cep = document.getElementById("cep").value;
       if (cep && !/^\d{5}-\d{3}$/.test(cep)) {
         valido = false;
